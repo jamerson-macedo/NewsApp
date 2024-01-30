@@ -1,5 +1,6 @@
 package com.example.newsapp.models
 
+import android.util.Log
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -9,7 +10,7 @@ import java.io.Serializable
 )
 data class Article(
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null,
+    var id: Int? = null,
     val author: String,
     val content: String,
     val description: String,
@@ -20,4 +21,12 @@ data class Article(
     val urlToImage: String
 
     // QUANDO TEMOS UM OBJETO PARA SALVAR COMO O SOURCE É PRECISO USAR O TYPE CONVERT
-) : Serializable
+) : Serializable{
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        if(url.isNullOrEmpty()){
+            result = 31 * result + url.hashCode()
+        }
+        return result
+    }
+}
