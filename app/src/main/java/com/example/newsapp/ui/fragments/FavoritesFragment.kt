@@ -20,12 +20,5 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
-    lateinit var viewlModel: NewsViewlModel
-    lateinit var newsAdapter: NewsAdapter
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
 }
