@@ -14,7 +14,7 @@ App que consome a API https://newsapi.org/
 - Pagination
 - ROOM
 - Navigation
-- Retrifit
+- Retrofit
 ## Layout mobile
 <p float="center">
   <img src="fotos/image3.jpg" width="250" />
