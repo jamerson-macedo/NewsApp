@@ -2,6 +2,7 @@ package com.example.newsapp.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AbsListView
@@ -57,6 +58,7 @@ class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
                     hideProgressBar()
                     response.data?.let {
                         newsAdapter.differ.submitList(it.articles.toList())
+                        Log.i("responseDiffer",it.toString())
                         // vai sxer 3 pages
                         val totalpages = it.totalResults / Constants.QUERY_PAGE + 2
                         isLastPage = newsViewlModel.headLinePages == totalpages

@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -43,6 +44,8 @@ class NewsViewlModel(app: Application, val repository: ArticleRepository) : Andr
         if (response.isSuccessful) {
             response.body()?.let { result ->
                 headLinePages++
+                // conta a pagina que ta mostrando
+                Log.i("headlinePage",headLinePages.toString())
                 if (headLineResponse == null) {
                     // se for a primeira vez ele pega o resultado e guarda na resposta
                     headLineResponse = result
@@ -110,6 +113,8 @@ class NewsViewlModel(app: Application, val repository: ArticleRepository) : Andr
         try {
             if (internetConnection(this.getApplication())) {
                 val response = repository.getHeadLines(countryCode, headLinePages)
+                Log.i("responseView",response.toString())
+                // aqui ele manda os artigos brutos
                 headLines.postValue(handleHeadLineReponse(response))
             } else {
                 headLines.postValue(Resource.Error("No internet"))
